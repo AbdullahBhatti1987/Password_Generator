@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body{
+            background: linear-gradient(to right, skyblue, pink);
+        }
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            margin-top: 50px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .passwordGenerator {
+            width: 40rem;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 5px 5px 10px lightslategray;
+            padding: 40px;
+            border-radius: 20px;
+            transition: box-shadow 0.5s ease;
+            background: linear-gradient(to left, skyblue, pink);
+        }
+        .passwordGenerator:hover {
+            
+            box-shadow: 5px 5px 40px lightslategray;
+        }
+
+        .passwordGenerator input {
+            width: 70%;
+            margin: 10px auto;
+            padding: 10px 20px;
+            border: 3px solid gray;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .passwordGenerator button {
+            width: 70%;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+        }
+    </style>
+    <header>
+        <h1>Password Generator</h1>
+    </header>
+    <div class="passwordGenerator">
+        <input type="text" maxlength="20" id="passrodDisplay" disabled>
+        <button onclick="generatePassword()">Password Generator</button>
+    </div>
+
+
+
+
+    <script>
+
+        const lowercaseArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+        const uppercaseArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        function generatePassword() {
+            let passwordGenerator = '';
+
+            for (let i = 1; i < 15; i++) {
+                let randomFind1 = Math.ceil(Math.random() * 25);
+                let randomFind2 = Math.ceil(Math.random() * 25);
+                passwordGenerator += lowercaseArray[randomFind1];
+                if (passwordGenerator.length > 15) {
+                    passwordGenerator.length = 15;
+                    break
+                }
+                if(i % 2 === 0){
+                    passwordGenerator += uppercaseArray[randomFind2];              
+                    let randomDigits = Math.ceil(Math.random()*8);
+                        // console.log(randomDigits)
+                    passwordGenerator += randomDigits;
+                }
+
+            }
+            let passwordDisplay = document.getElementById('passrodDisplay');
+            passwordDisplay.value = passwordGenerator;
+            // console.log(passwordGenerator)
+        }
+        let oldObject = {}
+
+
+
+    </script>
+</body>
+
+</html>
